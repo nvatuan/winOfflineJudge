@@ -1,0 +1,34 @@
+Problem#0000: Leaving Message 
+----------------------------------------------------------------------------------------------------
+Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
+But you live with your brother and Because he is not home at the moment, 
+if you leave the house without telling him, your brother might be worried!
+Thus, you want to leave behind a message so he can read it.
+
+Though there is one more thing, if he knows you are away from home then that would be too easy!
+You decided to change your message so he has to waste time on deciphering the message.
+
+You want to do that as follows:
+
+Your message is a string consists of:
+|  26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
+|  space character " " (without the quotation marks "")
+|  Dots "." (without the quotation marks "")
+|  Commas "," (without the quotation marks "")
+
+You want to delete every space characters (" "), every dot ("."), and every comma (","),
+and CHANGE EVERY CAPITALIZED CHARACTERS to not-capitalized characters.
+$
+----------------------------------------------------------------------------------------------------
+INPUT:
+One string, contains 4 things listed above.
+Length of String is less than 1000
+
+OUTPUT:
+A string, after the changes.
+
+EXAMPLE:
+INPUT:
+Dang Cong San Viet Nam muon nam.
+OUTPUT:
+dangcongsanvietnammuonnam
