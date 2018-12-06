@@ -1,12 +1,12 @@
-Problem#0000: Leaving Message 
+Problem#0000: Leaving Message
 ----------------------------------------------------------------------------------------------------
 Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
 But you live with your brother and Because he is not home at the moment, 
 if you leave the house without telling him, your brother might be worried!
 Thus, you want to leave behind a message so he can read it.
 
-Though there is one more thing, if he knows you are away from home then that would be too easy!
-You decided to change your message so he has to waste time on deciphering the message.
+Though there is one more thing, if he understands the message immediately then that would be too easy!
+You decide to change your message so he has to waste time deciphering the message.
 
 You want to do that as follows:
 
@@ -17,7 +17,7 @@ Your message is a string consists of:
 |  Commas "," (without the quotation marks "")
 
 You want to delete every space characters (" "), every dot ("."), and every comma (","),
-and CHANGE EVERY CAPITALIZED CHARACTERS to not-capitalized characters.
+and CHANGE EVERY CAPITALIZED CHARACTERS to non-capitalized characters.
 $
 ----------------------------------------------------------------------------------------------------
 INPUT:
@@ -29,6 +29,6 @@ A string, after the changes.
 
 EXAMPLE:
 INPUT:
-Dang Cong San Viet Nam muon nam.
+D,a,ng Co,ng Sa,n Vi,et, Na,m mu,on na,m.
 OUTPUT:
 dangcongsanvietnammuonnam
