@@ -1,38 +1,39 @@
-  Problem#0000: Leaving Message
+  Problem#0000: Xin chao
 --------------------------------------------------------------------------------------------------|
-Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
-But you live with your brother and Because he is not home at the moment, 
-if you leave the house without telling him, your brother might be worried!
-Thus, you want to leave behind a message so he can read it.
+Xin chao mung tat ca moi nguoi da den voi lorem-ipsum
+Cai ten lorem-ipsum khong he co nghia gi ca, nen moi nguoi khong can phai Google nhiet tinh dau.
 
-Though there is one more thing, if he understands the message immediately then that would be too
-easy! You decide to change your message so he has to waste time deciphering the message.
+Day la mot Program bao gom cac bai tap Programming Problems thuong la de suy nghi, kho cai dat
+(Easy to Solve, Hard to Implement). Thuong la vay. Tat nhien minh se khong bo lo co hoi nhet vao
+may bai Hard roi ;)  Ngon ngu ma phan mem duoc viet va su dung la C/C++.
 
-You want to do that as follows:
+Khi ban da viet xong mot chuong trinh, ban co the SUBMIT bai lam cua minh.
 
-Your message is a string contains at least one character of four things listed below:
-1> 26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
-2> space character " " (without the quotation marks "")
-3> Dots "." (without the quotation marks "")
-4> Commas "," (without the quotation marks "")
+Neu ban SUBMIT 1 file .c/.cpp chuong trinh se co gang Compile sang thanh .exe vi vay minh se 
+can ban install MinGW (compiler C/C++) va add thu muc do vao PATH. 
 
-You want to delete every space (" "), every dot ("."), and every comma (",") character
-and CHANGE EVERY CAPITALIZED CHARACTERS to non-capitalized characters.
+Neu ban khong hieu gi ca thi khong sao, co bien phap thu hai:
+    ban SUBMIT 1 file .exe thi chuong trinh se chay luon.
+Vi vay dung Dev-C++ luu ngay vao thu muc cua lorem-ipsum khong phai la y kien te.
 
+Doc them tai readme.html biet nhieu hon.
+
+A va con mot dieu nua, tat ca se duoc viet bang Tieng Anh.
+The program now only contains a number of problems, but more can be added in in the future.
+--------------------------------------------------------------------------------------------------|
+For now, write a program that takes ONE integer n (0 < n < 11).
+Print out n lines, with each line is a string that says "Hello, world!"
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:
-One string, contains at least one character of the English alphabet, space, dot and comma.
-The length of input string is not greater than 1000.
-
+A positive integer n (0 < n < 11)
 OUTPUT:
-One string after the changes.
-
+n lines, each line prints out "Hello, world!"
 --[EXAMPLE]---------------------------------------------------------------------------------------|
 INPUT:
-D,a,ng Co,ng Sa,n Vi,et, Na,m mu,on na,m.
+2
 OUTPUT:
-dangcongsanvietnammuonnam
-
+Hello, world!
+Hello, world!
 --[CONSTRAINTS]-----------------------------------------------------------------------------------|
 Time limit: 1 second
 Memory limit: Size of your RAM

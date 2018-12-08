@@ -75,22 +75,17 @@ int main(int argc, char *argu[]){
 		system("START /MAX navigate.exe 0");
 		exit(0);
 	}
-
-	initStatusExitcode();
-
-	probs.clear();
-	promptDir();
-	// probs contains the folder;
-	PROBSLOWERBOUND = probs.size()-1;
-	PROBSLOWERBOUND += 2;
-	
-	clrscr(0, 0, HSCREEN, VSCREEN);
+	else{
+		initStatusExitcode(); promptDir(); PROBSLOWERBOUND = probs.size()+1;
+		clrscr(0, 0, HSCREEN, VSCREEN);
+	}
 
 	gotoXY(2, 0);
 	SetColor("white");
 	for(unsigned i = 0; i < probs.size(); i++){
-		cout << "[" << probs[i] << "]\n";
+		cout << "[" << probs[i] << "]|\n";
 	}
+	cout << "--------|\n";
 
 	X = 2;
 	Y = 1;
@@ -128,22 +123,21 @@ int ppstatement(int problem_id){
 
 	string sPWD(PWD);
 	string sFLOOK;
-
 	sFLOOK = sPWD + FLOOK + to_s( problem_id ) + "\\" + FPROB;
-	unsigned ppsX = 2, ppsY = 8;
 
 	ifstream fpstate (sFLOOK);
 	string line;
+
 	bool bold = 0;
 	int linecount = 0;
+	unsigned ppsX = 2, ppsY = 8;
 
 	//gotoXY(2, 8);
 	if (fpstate.is_open()){
 	    while (!fpstate.eof() ){
-	    	gotoXY(ppsX++, ppsY);
-
-	    	line = "                                                                                                   ";
 	    	getline(fpstate, line);
+
+	    	gotoXY(ppsX++, ppsY);
 
 			if(!(bold++)) SetColor("White");
 	    	else SetColor("white");
@@ -156,8 +150,10 @@ int ppstatement(int problem_id){
 	    	 	line += ' ';
 	    	}
 	    	linecount++;
+
 	    	cout << line;
 	    }
+	    fpstate.close();
 
 	    maxlines = max(linecount, maxlines);
 	    while(linecount++ <= maxlines){
@@ -165,18 +161,12 @@ int ppstatement(int problem_id){
 	     	cout << "                                                                                                     ";
 	    }
 
-	    fpstate.close();
-
-	    //gotoXY(X, Y);
 	    STATUSMSG = " SUCCESS: " + sFLOOK + " loaded";
 	    statusupdated = 1;
 	    statuscolor = cl["Green"];
 
-	    gotoXY(selected+2, 0);
-
-		cout << "[" << probs[selected] << "]";
-		SetColor("White");
-		cout << "->";
+	    gotoXY(selected+2, 8);
+		cout << "=>";
 
 	    return 0;
 	}
@@ -187,7 +177,7 @@ int ppstatement(int problem_id){
 		gotoXY(selected+2, 0);
 		statuscolor = cl["Red"];
 
-		SetColor("red");
+		SetColor("Black");
 		cout << "[" << probs[selected] << "]";
 
 		return 1;
