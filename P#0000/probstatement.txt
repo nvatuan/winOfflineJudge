@@ -1,5 +1,5 @@
-Problem#0000: Leaving Message
-----------------------------------------------------------------------------------------------------
+  Problem#0000: Leaving Message
+--------------------------------------------------------------------------------------------------|
 Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
 But you live with your brother and Because he is not home at the moment, 
 if you leave the house without telling him, your brother might be worried!
@@ -10,25 +10,29 @@ easy! You decide to change your message so he has to waste time deciphering the 
 
 You want to do that as follows:
 
-Your message is a string consists of:
-|  26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
-|  space character " " (without the quotation marks "")
-|  Dots "." (without the quotation marks "")
-|  Commas "," (without the quotation marks "")
+Your message is a string contains at least one character of four things listed below:
+1> 26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
+2> space character " " (without the quotation marks "")
+3> Dots "." (without the quotation marks "")
+4> Commas "," (without the quotation marks "")
 
-You want to delete every space characters (" "), every dot ("."), and every comma (","),
+You want to delete every space (" "), every dot ("."), and every comma (",") character
 and CHANGE EVERY CAPITALIZED CHARACTERS to non-capitalized characters.
-$
-----------------------------------------------------------------------------------------------------
+
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:
-One string, contains at least one of each type of all things listed above.
-Length of String is not greater than 1000
+One string, contains at least one character of the English alphabet, space, dot and comma.
+The length of input string is not greater than 1000.
 
 OUTPUT:
-One string, after the changes.
+One string after the changes.
 
-[ EXAMPLE ]
+--[EXAMPLE]---------------------------------------------------------------------------------------|
 INPUT:
 D,a,ng Co,ng Sa,n Vi,et, Na,m mu,on na,m.
 OUTPUT:
 dangcongsanvietnammuonnam
+
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

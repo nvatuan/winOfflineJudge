@@ -1,0 +1,47 @@
+  Problem#0001: Hydra's Heads
+  (this problem appeared in ICPC 2018 Asia Hanoi Regional contest)
+--------------------------------------------------------------------------------------------------|
+PyPy - the bravest Knight of the country - wants to slay the Hydra and save his country.
+
+Hydra is a powerful magical creature with H heads and T tails. The only way to kill Hydra is to 
+cut off all H heads and all T tails. A Hydra with 0 heads and T>0 tails is considered still alive.
+
+PyPy is indeed brave, but he is not the studious kind! By far, he has learnt only these 4 moves:
+-	Move #1: Cut 1 of Hydra's Heads off.
+-	Move #2: Cut 1 of Hydra's Tails off.
+-	Move #3: Cut 2 of Hydra's Heads off.
+-	Move #4: Cut 2 of Hydra's Tails off.
+
+PyPy can execute ONE of the FOUR MOVES on Hydra at a time, but RIGHT AFTER using one of his
+four moves, this magical monster immediately grows back its head(s) or tail(s) as follows:
+-	If PyPy cuts off exactly 1 head, a new head grows immediately.
+-	If PyPy cuts off exactly 1 tail, 2 new tails grow immediately.
+-	If PyPy cuts off exactly 2 heads, nothing happens.
+-	If PyPy cuts off exactly 2 tails, a new head grows immediately.
+
+Please notice that, after PyPy's move that makes Hydra has 0 heads and 0 tails
+but if new heads and tails can still grow then the Hydra is still alive.
+
+Knight PyPy wants to kill Hydra as soon as possible. 
+What is the minimum number of moves that PyPy needs to use to kill Hydra?
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+Input contains at most 50 lines. Each lines contains exactly 2 integers H and T (0 < H,T < 101).
+2 integers H and T are space-separated. If H = 0 and T = 0 then END YOUR PROGRAM.
+
+OUTPUT:
+For each line in the INPUT, print exactly one line containing a single integer S:
+-	If it is impossible to kill Hydra, S = -1,
+-	Otherwise, S is the minimum number of moves to kill Hydra.
+
+--[EXAMPLE]----|--[EXPLANATION]-------------------------------------------------------------------|
+INPUT:         |
+3 3            |  PyPy uses: 4->3->3->2->2->2->4->4->3
+1 1            |  PyPy uses: 2->4->4
+0 0            |  2 zeroes, program is terminated.
+OUTPUT:        |
+9              |
+3              |
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM
