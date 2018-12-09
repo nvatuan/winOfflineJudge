@@ -31,28 +31,42 @@ int select(unsigned *X, unsigned *Y)
 	char c;
 	//do
 	{
-		c=getch();
-		switch(int(c)){
-			case 72:
-				if (checkListProbs( (*X)-1, (*Y) )) (*X)--;
-				break;
-			case 80:
-				if (checkListProbs( (*X)+1, (*Y) )) (*X)++;
-				break;
-			case 75:
-				if (checkListProbs( (*X), (*Y)-1 )) (*Y)--;
-				break;
-			case 77:
-				if (checkListProbs( (*X), (*Y)+1 )) (*Y)++;
-				break;
-			case 32:
-				return 1;
-			case 13:
-				return 1;
-			default:
-				return 0;
+		c = getch();
+		//std::cout << int(c) << " ";
+		if (int(c) == -32) { // if the first value is esc
+		    //getch(); // skip the [
+		    switch( int(getch()) ) { // the real value
+		        case 72:
+		            if (checkListProbs( (*X)-1, (*Y) )) (*X)--;
+		            break;
+		        case 80:
+		            if (checkListProbs( (*X)+1, (*Y) )) (*X)++;
+		            break;
+		        case 75:
+		            if (checkListProbs( (*X), (*Y)-1 )) (*Y)--;
+		            break;
+		        case 77:
+		            if (checkListProbs( (*X), (*Y)+1 )) (*Y)++;
+		            break;
+		    }
+		    gotoXY((*X),(*Y));
 		}
-		gotoXY((*X),(*Y));
+		else{
+
+			if(int(c) == 0) if(int(getch()) == 107) return -1;
+
+			switch(int(c)){
+				case 32:	// SPACE
+					return 1;
+				case 13:	// ENTER
+					return 2;
+				case 104:	// h
+				case 72:	// H
+					return 3;
+				default:
+					return 0;
+			}
+		}
 	}
 	return 0;
 }
@@ -81,7 +95,13 @@ void updateStatusBar(short interupt, std::string msg){
 	for(unsigned i = msg.length(); i < 108; i++) std::cout << ' ';
 	//gotoXY(0, 108);
 	printf("|\n");
-	printf("------------------------------------------------------------------------------------------------------------|\n");
+
+	printf("-------------------------------------------------| Control: [H][UP][DOWN] | View: [SPACE] |");
+	SetColor(15);
+	printf(" SUBMIT: [ENTER]");
+	SetColor(7);
+	printf(" |\n");
+
 	gotoXY(3, 0);
 }
 //------------------------------------------------------------------------------------------------------------------------------------------//

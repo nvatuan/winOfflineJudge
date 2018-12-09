@@ -20,7 +20,7 @@ Doc them tai readme.html biet nhieu hon.
 
 A va con mot dieu nua, tat ca se duoc viet bang Tieng Anh.
 The program now only contains a number of problems, but more can be added in in the future.
---------------------------------------------------------------------------------------------------|
+--[STATEMENT]-------------------------------------------------------------------------------------|
 For now, write a program that takes ONE integer n (0 < n < 11).
 Print out n lines, with each line is a string that says "Hello, world!"
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|

@@ -32,17 +32,17 @@ struct statusVerboseExitcode{
 } stt;
 
 //////////////////////////////// INIT
-vector< string > unsolved, attempted, solved;
 vector< string > probs;
 const int HSCREEN = 100;
 const int VSCREEN = 100;
+int SCRHCALIBRATE = 3;
 int maxlines = 0;
 
 short statusupdated;
 short statuscolor = 7;
 int selected = -1;
 
-char PWD[256]; 
+char PWD[1024]; 
 size_t len = sizeof(PWD);
 
 int folders;
@@ -65,7 +65,8 @@ bool list_dir();
 bool promptDir();
 void concatnum(char s[], int num);
 int ppstatement(int problem_id);
-
+bool screenCalibrate();
+void submitConsolePop();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------- MAIN --------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,9 +80,13 @@ int main(int argc, char *argu[]){
 		initStatusExitcode(); promptDir(); PROBSLOWERBOUND = probs.size()+1;
 		clrscr(0, 0, HSCREEN, VSCREEN);
 	}
-
+	
+reloadDisplay:
 	gotoXY(2, 0);
 	SetColor("white");
+
+	clrscr(2, 0, SCRHCALIBRATE, 8);
+
 	for(unsigned i = 0; i < probs.size(); i++){
 		cout << "[" << probs[i] << "]|\n";
 	}
@@ -100,8 +105,21 @@ int main(int argc, char *argu[]){
 		gotoXY(X, Y);
 
 		while(1){
-			if(select(&X, &Y)) break;
+			switch(select(&X, &Y)){
+				case -1:
+					exit(0);
+				case 1:		// Selected Statement
+					goto breakoutSelecting;
+				case 2: 	// Submit statement
+					submitConsolePop();
+					break;
+				case 3: 
+					screenCalibrate();
+					goto reloadDisplay;
+				default:;
+			}
 		};
+breakoutSelecting:
 		selected = (X-2);
 
 	} while(1);
@@ -110,6 +128,11 @@ int main(int argc, char *argu[]){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------ END MAIN ------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void submitConsolePop(){
+	string cmdSubmitStr = "START submit.exe " + string(PWD) + '\\' + probs[X-2];
+	system(cmdSubmitStr.c_str());
+	return;
+}
 int ppstatement(int problem_id){
 	//filewd >> PWD;
 	//filewd.close();
@@ -171,7 +194,7 @@ int ppstatement(int problem_id){
 	    return 0;
 	}
 	else{
-		STATUSMSG = " ERROR: " + sFLOOK + " not found";
+		STATUSMSG = " ERROR: NO PROBLEM STATEMENT. \"" + sFLOOK + "\" not found";
 		statusupdated = 1;
 
 		gotoXY(selected+2, 0);
@@ -214,6 +237,61 @@ bool list_dir(){
     return 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------//
+bool screenCalibrate(){
+
+refresh:
+	//clrscr(2, 0, 100, 70);
+	clrscr(2, 0, HSCREEN, VSCREEN);
+
+	STATUSMSG        = " ! Using UP/DOWN button to set the HEIGHT of your text display, ESC to redo, ENTER to finish !";
+
+	string border    = "        |---------------------------------------------------------------------------------------------------|";
+	string clrborder = "                                                                                                            ";
+
+	int X = 30;
+	int Y = 0;
+	
+	for(int i = 2; i < 31; i++){
+		cout << border << endl;
+	}
+
+	while(1){
+		updateStatusBar(cl["White"], STATUSMSG);
+		
+		gotoXY(X, Y);
+		cout << X;
+
+		char c = getch();
+		switch(int(c)){
+			case 72:
+				if(X > 20) {
+					cout << clrborder;
+					X--;
+					gotoXY(X, Y);
+					cout << border << endl;
+				}
+				break;
+			case 80:
+				if(X < 60) {
+					X++;
+					gotoXY(X, Y);
+					cout << border << endl;
+				}
+				break;
+			case 13:
+				SCRHCALIBRATE = X;
+				goto jumpoutScreenCalibrate;
+			case 27:
+				goto refresh;
+			//default:
+		}
+	}
+jumpoutScreenCalibrate:
+	statusupdated = 1;
+	STATUSMSG = "Nothing is currently selected.";
+	return 0;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------//
 bool promptDir(){
 	getcwd( PWD, FILENAME_MAX );
 
@@ -223,9 +301,9 @@ bool promptDir(){
 
 	while(1){
 		cout << " Locating PROBLEMS_STATEMENTs folders...\n";
-		cout << " > Your working directory is currently:\n";
+		cout << " > Your working directory currently is: ";
 		SetColor("Green");
-		cout << "    " << PWD << "\n";
+		cout << PWD << "\n";
 		SetColor("White");
 		//SetColor("Yellow");
 		if(list_dir()){
