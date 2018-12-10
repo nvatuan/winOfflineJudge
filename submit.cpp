@@ -18,6 +18,8 @@ char * PATH;
 
 unsigned execount = 0;
 ///////////////////////////////// INIT JUDGE /////////////////////////////////
+int MODE_AC = 1;
+
 int STATUS;
 int TESTSCOUNT;
 int TESTSPASS;
@@ -31,11 +33,10 @@ int checkBounds(short i,short j);
 bool isExecutable(const char *fspec);
 int sselect(unsigned *X, unsigned *Y);
 
+int checkWA(int t_id);
 int judge(int exe_id);
-DWORD WINAPI runningThread( LPVOID lpParam );
 
 int selectExecutable();
-void makeSourceFile();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------- MAIN --------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,41 +116,54 @@ int main(int argc, char *argu[]){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //---------------------------------------------------------- END MAIN --------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DWORD WINAPI runningThread( LPVOID lpParam )
-{    
-    if( (GetStdHandle(STD_OUTPUT_HANDLE)) == INVALID_HANDLE_VALUE ) return 1; // ? Time
-    //system( JUDGECOMMAND.c_str() );
-    return 0; 
-} 
+int checkWA(int t_id){
+	//string juryin  = sPATH + "\\testcases\\in";
+	string juryout = sPATH + "\\testcases\\out" + to_string(t_id);
+
+	string consout = sPATH + "\\testcases\\userout";
+
+	string line1, line2;
+
+	ifstream fJ(juryout);
+	ifstream fC(consout);
+
+	if(!(fJ.is_open() && fC.is_open())) return -1;
+
+	while(!( fJ.eof()&&fC.eof() )){
+		fJ >> line1;
+		fC >> line2;
+		//if(fJ.eof()^fC.eof()) return 1; // WRONG
+		if(line1 != line2) return 1;
+	}	
+	return 0;
+}
 
 int judge(int exe_id){
 	cout << "\nJUDGING...\n";
-	string juryin = "in";
-	string ppout = "userout";
-	string juryout = "out";
-
-	string sCMDCOPY = "copy " + sPATH + "\\" + exefiles[exe_id] + " /B " + \
-					sPATH + "\\" + "CopyOf" + exefiles[exe_id] + " /B";
-	string sCMDDEL = 
-
-
-
-
-	HANDLE hRunningThread = 0;
+	////////////////////////////////  COMMANDLINE STRING
+	string sCLONE   = "Doppelganger_" + exefiles[exe_id];
+	string sCMDCOPY = "COPY \"" + sPATH + "\\" + exefiles[exe_id] + "\" /B " + \
+					       "\"" + sPATH + "\\" + sCLONE           + "\" /B > nul";
+	string sCMDDEL  = "DEL  \"" + sPATH + "\\" + sCLONE + "\"";
+	string sCMDKIL  = "TASKKILL /F /IM \"" + sCLONE + "\" > nul";
+	//////////////////////////////// CREATEPROCESS() INIT
 
 	char aJUDGECOMMAND[MAX_PATH];
 	int subProcessStatus;
 
+	system(sCMDCOPY.c_str()); 
+
 	SetColor(10);
 	for(int t_id = 1; t_id <= TESTSCOUNT; t_id++){
-	    string JUDGECOMMAND = "C:\\Windows\\System32\\cmd.exe /c type " + sPATH + "\\testcases\\in" + to_string(t_id) + \
-		    		   "|" + sPATH + "\\" + exefiles[exe_id] + ">" + \
-					   sPATH + "\\testcases\\userout";
+	    string JUDGECOMMAND = \
+	    	"C:\\Windows\\System32\\cmd.exe /c type " + sPATH + "\\testcases\\in" + to_string(t_id) + \
+		    "| \"" + sPATH + "\\" + sCLONE + \
+		    "\" >" + sPATH + "\\testcases\\userout";
 
 		strcpy(aJUDGECOMMAND, JUDGECOMMAND.c_str());
 
-		PROCESS_INFORMATION ProcessInfo; //This is what we get as an [out] parameter
-		STARTUPINFO StartupInfo; //This is an [in] parameter
+		PROCESS_INFORMATION ProcessInfo; 
+		STARTUPINFO StartupInfo; 
 		ZeroMemory(&StartupInfo, sizeof(StartupInfo));
 		StartupInfo.cb = sizeof StartupInfo ; //Only compulsory field
 
@@ -158,23 +172,45 @@ int judge(int exe_id){
 		    subProcessStatus = WaitForSingleObject( ProcessInfo.hProcess, TIMELIMIT + EXTRATIME );
 		    
 		    if(!subProcessStatus){
+		    	SetColor(15);
 				cout << "Test " << t_id << " ran.\n";
 				CloseHandle(ProcessInfo.hThread);
 		    	CloseHandle(ProcessInfo.hProcess);
+
+		    	switch(checkWA(t_id)){
+		    		case 0:
+			    		SetColor(10);
+			    		cout << "Correct Answer.\n";
+			    		break;
+			    	case 1:
+			    		SetColor(12);
+			    		cout << "Wrong Answer on Test " << t_id << "\n";
+			    		if(MODE_AC){
+			    			system(sCMDDEL.c_str());
+			    			return -1;
+			    		}
+			    	case -1:
+			    		SetColor(15);
+			    		cout << "Cannot open test files to cross-check answer.\n";
+			    		system(sCMDDEL.c_str());
+			    		return 0;
+		    	}
 				continue;
 			}
 			else{ //TIME LIMIT EXCEEDED
+
 				SetColor(12);
 				cout << "Time Limit Exceed on Test " << t_id << "\n";
-				cout << TerminateThread(hRunningThread, 1);
 				CloseHandle(ProcessInfo.hThread);
 		    	CloseHandle(ProcessInfo.hProcess);
-		    	//system
-				printf("\n%lu", ProcessInfo.dwProcessId);
-				return -1; 
+		    	
+		    	system(sCMDKIL.c_str());
+				system(sCMDDEL.c_str());
+				if(MODE_AC) return -2; 
 			}
 		}
 	}
+	system(sCMDDEL.c_str());
 	return 0;
 }
 
