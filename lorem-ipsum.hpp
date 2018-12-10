@@ -1,6 +1,7 @@
 #include <windows.h> // xu ly nhung thu lien quan den Win32
 #include <dirent.h> // xu ly cac ve PATH cac folder va file (directory)
 #include <iostream>	// thu vien INPUT OUTPUT
+#include <stdlib.h> // thu vien chuan C
 #include <fstream>	// thu vien xu ly FILE
 #include <conio.h> 	// xu ly nhung thu lien quan den Console cmd
 #include <vector>	// cau truc du lieu VECTOR
@@ -32,6 +33,7 @@ int select(unsigned *X, unsigned *Y)
 	//do
 	{
 		c = getch();
+		//std::cout << getch() << " " << getch() << " ";
 		//std::cout << int(c) << " ";
 		if (int(c) == -32) { // if the first value is esc
 		    //getch(); // skip the [
@@ -52,8 +54,12 @@ int select(unsigned *X, unsigned *Y)
 		    gotoXY((*X),(*Y));
 		}
 		else{
-
-			if(int(c) == 0) if(int(getch()) == 107) return -1;
+			
+			if(int(c) == 0) {
+				char cc = getch();
+				if(int(cc) == 107) return -1;
+				if(int(cc) == 63)  return -2;
+			}
 
 			switch(int(c)){
 				case 32:	// SPACE
@@ -96,7 +102,7 @@ void updateStatusBar(short interupt, std::string msg){
 	//gotoXY(0, 108);
 	printf("|\n");
 
-	printf("-------------------------------------------------| Control: [H][UP][DOWN] | View: [SPACE] |");
+	printf("---------------------------------------------| Control: [H][F5][UP][DOWN] | View: [SPACE] |");
 	SetColor(15);
 	printf(" SUBMIT: [ENTER]");
 	SetColor(7);

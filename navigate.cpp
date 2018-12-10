@@ -106,6 +106,8 @@ reloadDisplay:
 
 		while(1){
 			switch(select(&X, &Y)){
+				case -2:
+					goto reloadDisplay;
 				case -1:
 					exit(0);
 				case 1:		// Selected Statement
@@ -174,7 +176,7 @@ int ppstatement(int problem_id){
 	    	}
 	    	linecount++;
 
-	    	cout << line;
+	    	cout << line;	
 	    }
 	    fpstate.close();
 
