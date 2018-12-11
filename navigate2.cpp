@@ -202,27 +202,34 @@ int ppstatement(int problem_id){
 	unsigned ppsX = 2, ppsY = 8;
 
 	//gotoXY(2, 8);
+	statementLines.clear();
+
 	if (fpstate.is_open()){
 	    while (!fpstate.eof() ){
 	    	getline(fpstate, line);
-
-	    	gotoXY(ppsX++, ppsY);
-
-			if(!(bold++)) SetColor("White");
-	    	else SetColor("white");
-	    	if(line == "INPUT:" || line == "OUTPUT:") SetColor("White");
-	    	if(line[0]=='-'  && line[1]=='-' && line[2]=='[') SetColor("White");
-
-	    	cout << "| ";
+	    	
 	    	int l = line.length();
 	    	while(l++ < 100){
 	    	 	line += ' ';
 	    	}
 	    	linecount++;
 
-	    	cout << line;	
+	    	statementLines.push_back(line);
 	    }
 	    fpstate.close();
+
+		gotoXY(ppsX++, ppsY);
+
+		if(!(bold++)) SetColor("White");
+    	else SetColor("white");
+    	if(line == "INPUT:" || line == "OUTPUT:") SetColor("White");
+    	if(line[0]=='-'  && line[1]=='-' && line[2]=='[') SetColor("White");
+
+    	cout << "| ";
+
+
+
+
 
 	    maxlines = max(linecount, maxlines);
 	    while(linecount++ <= maxlines){

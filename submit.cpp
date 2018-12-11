@@ -19,6 +19,7 @@ char * PATH;
 unsigned execount = 0;
 ///////////////////////////////// INIT JUDGE /////////////////////////////////
 int MODE_AC = 1;
+int JUDGERETURN;
 
 int STATUS;
 int TESTSCOUNT;
@@ -29,6 +30,7 @@ int TIMELIMIT;
 int EXTRATIME = 100;
 ///////////////////////////////// PROTOTYPE //////////////////////////////////
 int readSubDetails();
+int writeSubDetails();
 int checkBounds(short i,short j); 
 bool isExecutable(const char *fspec);
 int sselect(unsigned *X, unsigned *Y);
@@ -96,7 +98,9 @@ int main(int argc, char *argu[]){
     	SetColor(7);
 
     	if(readSubDetails()) return 0;
-    	judge( selectExecutable() );
+    	JUDGERETURN = judge( selectExecutable() );
+
+    	writeSubDetails();
     }
     else{
     	cout << "  NO .EXE FILES FOUND\n";// CODE-PASTING METHOD IS USED\n";
@@ -118,9 +122,18 @@ int main(int argc, char *argu[]){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int checkWA(int t_id){
 	//string juryin  = sPATH + "\\testcases\\in";
+		
 	string juryout = sPATH + "\\testcases\\out" + to_string(t_id);
-
 	string consout = sPATH + "\\testcases\\userout";
+
+	if(access( juryout.c_str(), F_OK) == -1){
+		cout << "JURY OUTPUT out FILE DOESNT EXIST!\n";
+		return -1;
+	}
+	if(access( consout.c_str(), F_OK) == -1){
+		cout << "YOUR OUTPUT userout FILE DOESNT EXIST!\n";
+		return -1;	
+	}
 
 	string line1, line2;
 
@@ -154,9 +167,16 @@ int judge(int exe_id){
 	system(sCMDCOPY.c_str()); 
 
 	SetColor(10);
-	for(int t_id = 1; t_id <= TESTSCOUNT; t_id++){
+	int t_id = 0;
+	//for(int t_id = 1; t_id <= TESTSCOUNT; t_id++){		// ABANDONING TESTCOUNT VARIABLE
+	while(++t_id){
+		string inNo = sPATH + "\\testcases\\in" + to_string(t_id);
+		if(access( inNo.c_str(), F_OK) == -1){ break; }
+		string outNo = sPATH + "\\testcases\\out" + to_string(t_id);
+		if(access( outNo.c_str(), F_OK) == -1){ SetColor(7); cout << "Output file out" << t_id << " doesnt seem to exist.\n"; continue; }
+
 	    string JUDGECOMMAND = \
-	    	"C:\\Windows\\System32\\cmd.exe /c type " + sPATH + "\\testcases\\in" + to_string(t_id) + \
+	    	"C:\\Windows\\System32\\cmd.exe /c type " + inNo + \
 		    "| \"" + sPATH + "\\" + sCLONE + \
 		    "\" >" + sPATH + "\\testcases\\userout";
 
@@ -193,7 +213,7 @@ int judge(int exe_id){
 			    		SetColor(15);
 			    		cout << "Cannot open test files to cross-check answer.\n";
 			    		system(sCMDDEL.c_str());
-			    		return 0;
+			    		return -100;
 		    	}
 				continue;
 			}
@@ -211,7 +231,8 @@ int judge(int exe_id){
 		}
 	}
 	system(sCMDDEL.c_str());
-	return 0;
+	if(t_id == 1) {SetColor(15); cout << "NO TESTFILE FOUND, MAKE SURE THAT YOUR TESTFILES WERE LABLED FROM in1/out1\n"; return -100;}
+	else return 100;
 }
 
 int readSubDetails(){
@@ -219,24 +240,68 @@ int readSubDetails(){
 	string subDetails = sPATH + surfix;
 
 	if(access( subDetails.c_str(), F_OK) != -1){
-		cout << "Details file exists, getting data...\n";	
+		cout << "Details file exists, getting data...\n";
+		if(access( subDetails.c_str(), R_OK) == -1){
+			cout << "Read permission for Details file is not given, Judging is Aborted.\n";
+			return 1;
+		}
 	}
 	else{
-		cout << "Details file doesn't exist, Judging is Aborted.\n";
-		return 1;
-	}
-	if(access( subDetails.c_str(), R_OK) == -1){
-		cout << "Read permission for Details file is not given, Judging is Aborted.\n";
-		return 1;
+		cout << "Details file doesn't exist, Creating a default one.\n";
+		//STATUS = 0;
+		JUDGERETURN = 0;
+		TESTSPASS = 0;
+		TESTSPASSBEST = 0;
+		SUBMISSIONS = -1;
+		TIMELIMIT = 1000;
+
+		writeSubDetails();
+		//return 1;
 	}
 
 	ifstream sdetails (subDetails);
 	sdetails >> STATUS;
-	sdetails >> TESTSCOUNT;
+	//sdetails >> TESTSCOUNT;
 	sdetails >> TESTSPASS;
 	sdetails >> TESTSPASSBEST;
 	sdetails >> SUBMISSIONS;
 	sdetails >> TIMELIMIT;
+	sdetails.close();
+
+	//(TIMELIMIT < 100 || TIMELIMIT > 10000) CHECK
+
+	return 0;
+}
+int writeSubDetails(){
+	if(JUDGERETURN == -100){
+		cout << "Program didnt function as intended, abort updating details file.\n";
+		return 0;
+	}
+
+	string surfix = "\\pdetails";
+	string subDetails = sPATH + surfix;
+
+	if(access( subDetails.c_str(), F_OK) != -1){
+		cout << "Writing to Details file...\n";	
+		if(access( subDetails.c_str(), R_OK) == -1){
+			cout << "Read permission for Details file is not given, judge result is discared.\n";
+			return 1;
+		}
+	}
+	else{
+		cout << "Details file doesn't exist, making a new pdetails file...\n";
+		//return 1;
+	}
+
+	ofstream sdetails (subDetails);
+
+	if(STATUS != 100) sdetails << JUDGERETURN << endl;
+	else sdetails << STATUS << endl;
+	//sdetails >> TESTSCOUNT;
+	sdetails << TESTSPASS << endl;
+	sdetails << TESTSPASSBEST << endl;
+	sdetails << (SUBMISSIONS + 1) << endl;
+	sdetails << TIMELIMIT << endl;
 	sdetails.close();
 
 	//(TIMELIMIT < 100 || TIMELIMIT > 10000) CHECK
@@ -265,7 +330,7 @@ int selectExecutable(){
 		switch(sselect(&sX, &sY)){
 			case 1:
 			case 2:
-				gotoXY(4 + execount, 2);
+				gotoXY(4 + execount + 1, 2);
 				return (sX - 4);
 			default:;
 		}
@@ -310,6 +375,8 @@ int sselect(unsigned *X, unsigned *Y)
 					return 1;	// SPACE
 				case 13: 
 					return 2;	// ENTER
+				case 27:
+					exit(0);
 				default: return 0;
 			}
 		}
