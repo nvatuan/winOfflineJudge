@@ -205,6 +205,9 @@ int ppstatement(int problem_id){
 	statementLines.clear();
 
 	if (fpstate.is_open()){
+
+		if(validselected == selected)
+
 	    while (!fpstate.eof() ){
 	    	getline(fpstate, line);
 	    	
@@ -226,8 +229,6 @@ int ppstatement(int problem_id){
     	if(line[0]=='-'  && line[1]=='-' && line[2]=='[') SetColor("White");
 
     	cout << "| ";
-
-
 
 
 
