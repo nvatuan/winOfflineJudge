@@ -14,7 +14,7 @@ every folders P#XXXX contains statement and testcases
 
 the program loads all the statements and show it to you on the terminal
 
-select one and hit Enter to submit your **BINARY FILE** so the program can cross-checking your output
+select one and hit Enter to submit your **BINARY EXECUTABLE FILE (.EXE)** so the program can cross-checking your output
 
 there is more, you can add Programming Problem Statement and testcases by, guess what, creating folders and textfiles. wow i know.
 
