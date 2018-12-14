@@ -5,7 +5,7 @@
 // #include <conio.h> 	// xu ly nhung thu lien quan den Console cmd
 // #include <vector>	// cau truc du lieu VECTOR
 // #include <map>		// cau truc du lieu MAP
-#include "lorem-ipsum.hpp"
+#include "lorem-ipsum2.hpp"
 using namespace std;
 
 //////////////////////////////// COLOR
@@ -39,7 +39,9 @@ vector< string > probs;
 const int HSCREEN = 100;
 const int VSCREEN = 100;
 
-int SCRHCALIBRATE = 45;
+string statustext;
+int SCRH_CALI = 45;
+int SCRV_CALI = 63;
 int maxlines = 0;
 
 short statusupdated;
@@ -74,13 +76,14 @@ void concatnum(char s[], int num);
 int ppstatement(int problem_id);
 bool screenCalibrate();
 void submitConsolePop();
+void updateStatusBar(short interupt, string msg);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------- MAIN --------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char *argu[]){
 
 	if(argc == 1){
-		system("START /MAX navigate.exe 0");
+		system("START /MAX navigate2.exe 0");
 		exit(0);
 	}
 	else{
@@ -93,7 +96,7 @@ reloadDisplay:
 	SetColor("white");
 
 	//clrscr(2, 0, SCRHCALIBRATE, 8);
-	clrscr(2, 0, 55, 8);
+	clrscr(2, 0, HSCREEN, VSCREEN);
 
 	for(unsigned i = 0; i < probs.size(); i++){
 		string sPdetailsPath = string(absPWD) + "\\" + probs[i] + "\\pdetails";
@@ -205,9 +208,6 @@ int ppstatement(int problem_id){
 	statementLines.clear();
 
 	if (fpstate.is_open()){
-
-		if(validselected == selected)
-
 	    while (!fpstate.eof() ){
 	    	getline(fpstate, line);
 	    	
@@ -229,6 +229,8 @@ int ppstatement(int problem_id){
     	if(line[0]=='-'  && line[1]=='-' && line[2]=='[') SetColor("White");
 
     	cout << "| ";
+
+
 
 
 
@@ -307,25 +309,27 @@ bool screenCalibrate(){
 
 refresh:
 	//clrscr(2, 0, 100, 70);
-	clrscr(2, 0, HSCREEN, VSCREEN);
+	clrscr(0, 0, HSCREEN, VSCREEN);
 
-	STATUSMSG        = " ! Using UP/DOWN button to set the HEIGHT of your text display, ESC to redo, ENTER to finish !";
+	STATUSMSG        = " ! [UP]/[DOWN] to set the HEIGHT of your text display,[ESC] to redo, [ENTER] to finish !";
 
-	string border    = "        |---------------------------------------------------------------------------------------------------|";
-	string clrborder = "                                                                                                            ";
+	string border    = "        V__________________________________________________";
+	string clrborder = "|                                                  ";
 
 	int X = 30;
 	int Y = 0;
 	
-	for(int i = 2; i < 31; i++){
-		cout << border << endl;
+	for(int i = 2; i < X; i++){
+		cout << "        |\n";
 	}
+	cout << border << endl;
 
 	while(1){
 		updateStatusBar(cl["White"], STATUSMSG);
 		
 		gotoXY(X, Y);
 		cout << X;
+		gotoXY(X, 8);
 
 		char c = getch();
 		switch(int(c)){
@@ -338,14 +342,69 @@ refresh:
 				}
 				break;
 			case 80:
-				if(X < 60) {
+				if(X < 80) {
+					cout << clrborder;
 					X++;
 					gotoXY(X, Y);
 					cout << border << endl;
 				}
 				break;
 			case 13:
-				SCRHCALIBRATE = X;
+				SCRH_CALI = X;
+				goto jumptoScreenVerticalCalibrate;
+			case 27:
+				goto refresh;
+			//default:
+		}
+	}
+	
+jumptoScreenVerticalCalibrate:
+	STATUSMSG        = " ! [LEFT]/[RIGHT] to set the WIDTH of your text display, [ESC] to redo, [ENTER] to finish !";
+
+	string border2    = ">|";
+	string clrborder2 = "  ";
+
+	X = SCRH_CALI;
+	Y = 20;
+	
+	gotoXY(X, 0);
+	cout << Y;
+	gotoXY(X, 9);
+	for(int i = 9; i < Y-2; i++){
+		cout << "-";
+	}
+	cout << border2;
+
+	while(1){
+		updateStatusBar(cl["White"], STATUSMSG);
+		gotoXY(X, Y);
+		cout << (Y-9);
+
+		char c = getch();
+		switch(int(c)){
+			case 75:	//LEFT
+				if(Y > 20) {
+					gotoXY(X, Y-3);
+					cout << border2;
+					cout << "   ";
+					//cout << clrborder2;
+					Y--;
+					gotoXY(X, Y);
+					//cout << border2;
+				}
+				break;
+			case 77:	//RIGHT
+				if(Y < 100) {
+					gotoXY(X, Y-2);
+					cout << "-";
+					cout << border2;
+					Y++;
+					gotoXY(X, Y);
+					//cout << border << endl;
+				}
+				break;
+			case 13:
+				SCRV_CALI = Y;
 				goto jumpoutScreenCalibrate;
 			case 27:
 				goto refresh;
@@ -353,6 +412,13 @@ refresh:
 		}
 	}
 jumpoutScreenCalibrate:
+	
+	statustext = "";
+	for(int i = 0; i <= SCRV_CALI; i++) statustext += '-';
+	
+	gotoXY(0, 0);
+	cout << statustext << endl << statustext;
+	system("pause > nul");
 	statusupdated = 1;
 	STATUSMSG = "Nothing is currently selected.";
 	return 0;
@@ -365,7 +431,7 @@ bool promptDir(){
 
 	while(1){
 		cout << " Locating \\data\\ folders...\n";
-		cout << " > Your working directory currently is: ";
+		cout << " > Your working directory currently is:\n";
 		SetColor("Green");
 		cout << PWD << "\\data\\"<< "\n";
 		SetColor("White");
@@ -391,4 +457,30 @@ void concatnum(char s[], int num){
 		num /= 10;
 	} while (num%10 > 0);
 	s[i] = '\0';
+}
+//------------------------------------------------------------------------------------------------------------------------------------------//
+void updateStatusBar(short interupt, string msg){
+	unsigned X = 0;
+	gotoXY(0, 0);
+	switch(interupt){
+		case 0:
+			return;
+		default:
+			SetColor(interupt);
+			std::cout << msg;
+			SetColor(7);
+	}
+	
+	for(unsigned i = msg.length(); i <= SCRV_CALI; i++) cout << ' ';
+	printf("|\n");
+	string controlpanel = "| Control: [H][F5][UP][DOWN] | View: [SPACE] |";
+	gotoXY(1, SCRV_CALI - controlpanel.length() - 16); //SUBMIT: [ENTER] length
+	cout << controlpanel;
+	
+	SetColor(15);
+	printf(" SUBMIT: [ENTER]");
+	SetColor(7);
+	printf(" |\n");
+
+	gotoXY(3, 0);
 }
