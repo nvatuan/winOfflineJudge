@@ -125,7 +125,7 @@ reloadDisplay:
 		if(!existStatement[i]) SetColor("Black");
 		cout << "[" << probs[i] << "]";
 		SetColor("white");
-		if(i != selected) cout << "|\n";
+		if(int(i) != selected) cout << "|\n"; //avoid warning cause fuck it
 		else cout << "\n";
 	}
 	cout << "--------|\n";
