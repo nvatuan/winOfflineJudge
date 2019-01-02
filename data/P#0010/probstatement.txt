@@ -31,14 +31,14 @@ Input contains at most 50 lines. Each lines contains exactly 2 integers H and T 
 
 OUTPUT:
 For each line in the INPUT, print exactly one line containing a single integer S:
--	If it is impossible to kill Hydra, S = -1,
--	Otherwise, S is the minimum number of moves to kill Hydra.
+-  If it is impossible to kill Hydra, S = -1,
+-  Otherwise, S is the minimum number of moves to kill Hydra.
 
 --[EXAMPLE]----|--[EXPLANATION]-------------------------------------------------------------------|
 INPUT:         |
-3 3            |  PyPy uses his moves with number #: 4->3->3->2->2->2->4->4->3
-1 1            |  PyPy uses his moves with number #: 2->4->4
-0 0            |    2 zeroes are met, program is now terminated.
+3 3            |  PyPy uses one of his four moves one at a time #: 4->3->3->2->2->2->4->4->3
+1 1            |  PyPy uses one of his four moves one at a time #: 2->4->4
+0 0            |    INPUT has 2 zeroes -> H = T = 0 -> program is now stopped.
 OUTPUT:        |
 9              |
 3              |
