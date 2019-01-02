@@ -1,38 +1,38 @@
-  Problem#0001: Leaving Message
+  Problem#0001: Previous Even
 --------------------------------------------------------------------------------------------------|
-Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
-But you live with your brother and because he is not home at the moment. 
-If you leave the house without telling him, your brother might be worried!
-Thus, you want to leave behind a message so he can read it.
+Man Tiev is a developing country that is constantly changing. But changes don't always
+lead to a better future. There is one thing for sure about changes, people under their influences
+have to adapt to them, either forced or voluntary. Historically, the changes weren't that
+beneficial for the people.
 
-Though there is one more thing, if he understands the message immediately then that would be too
-easy! You decide to change your message so he has to waste time deciphering the message.
+Huy is a lab rat to the Education system's new rule, which requires people to learn about odd
+numbers first then even numbers later. Unfortunately, the day the class learnt about even numbers,
+Huy was sick from bad-weather so he had to skip school that day.
 
-You want to do that as follows:
+Today, he goes to school and notices he has an one-period exam. One problem states that, for each
+number that is given, write out the largest even number that is smaller than that number. He is
+SHOCKED. Since he always get perfect grades, he couldn't afford to fail this one. But all of his
+teacher are robots, he couldn't ask them to delay the test or even make an exception for him. 
+Troubled, he decides to pray Gods for help. (that's your new job)
 
-Your message is a string contains at least one character of four things listed below:
-1> 26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
-2> space character " " (without the quotation marks "")
-3> Dots "." (without the quotation marks "")
-4> Commas "," (without the quotation marks "")
+Being a new god like you are, you don't really want to refuse to any trivial prayers.
+You decide to help Huy by sending Huy a small program.
 
-You want to delete every space (" "), every dot ("."), and every comma (",") character
-and CHANGE EVERY CAPITALIZED CHARACTERS to non-capitalized characters.
-
+--[STATEMENT]-------------------------------------------------------------------------------------|
+The program takes ONE INTEGER  n  as INPUT. (0 < n < 1 000 000 000 000 000 001) (or 0 < n <= 10^18)
+OUPUT ONE INTEGER that is the largest even number, but smaller than  n
+In other words, OUTPUT ONE even INTEGER that is strictly smaller than  n
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:
-One string, contains at least one character of the English alphabet, space, dot and comma.
-The length of input string is not greater than 1000.
-
+An integer n (0 < n <= 10^18)
 OUTPUT:
-One string after the changes.
-
+An integer that satifies the statement.
 --[EXAMPLE]---------------------------------------------------------------------------------------|
 INPUT:
-D,a,ng Co,ng Sa,n Vi,et, Na,m mu,on na,m.
+69
 OUTPUT:
-dangcongsanvietnammuonnam
-
+68
 --[CONSTRAINTS]-----------------------------------------------------------------------------------|
 Time limit: 1 second
 Memory limit: Size of your RAM
+

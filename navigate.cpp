@@ -22,7 +22,7 @@ string \
 	FWD = "workingdir.string";
 string \
 	FPROB = "probstatement.txt", \
-	FLOOK = "\\P#",				 \
+	//FLOOK = "\\P#",				 
 	STATUSMSG = "";
 
 struct statusVerboseExitcode{
@@ -36,6 +36,8 @@ vector< string > statementLines;
 
 vector< bool > existStatement;
 vector< string > probs;
+vector< int > selectToID;
+
 const int HSCREEN = 100;
 const int VSCREEN = 100;
 
@@ -192,7 +194,8 @@ int ppstatement(int problem_id){
 
 	string sPWD(absPWD);
 	string sFLOOK;
-	sFLOOK = sPWD + FLOOK + to_s( problem_id ) + "\\" + FPROB;
+	//sFLOOK = sPWD + FLOOK + to_s( problem_id ) + "\\" + FPROB;
+	sFLOOK = sPWD + "\\" + probs[problem_id] + "\\" + FPROB;
 
 	ifstream fpstate (sFLOOK);
 	string line;

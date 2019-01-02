@@ -1,13 +1,8 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main(){
-	string st;
-	getline(cin, st);
-
-	for(unsigned i = 0; i < st.length(); i++){
-		if(('a' <= st[i])&&(st[i] <= 'z')) cout << st[i];
-		if(('A' <= st[i])&&(st[i] <= 'Z')) cout << char(st[i] + 'a' - 'A');
-	}
-	//while(1){};
+	long long a;
+	scanf("%lld", &a);
+	printf("%lld", a - (2 - (a%2)));
+	return 0;
 }
