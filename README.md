@@ -3,18 +3,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 # what is this OwO
-_I was thinking along the line of pratice programming when i made this_
+a test project for me to see how creative i can be with windows console and the place cursor function
+so uh basically you can create a FPS game with this console i found some dude's project on the internet
 
-Windows based, utilized cmd tool. 
+the only limit is that you have to print a character and not free form drawing pixels, that's strong enough i guess?
 
-A simple program/game that allows you to horn your programming skill (not appropriate for intermidate programmers since the problems would be too easy ;) )
+
+this is a simple program that displays a programming problem, for data each problem has a testcases folder and a problem statement, when you hit submit, you will be prompted to select a (Windows) executable within the same folder of the problem you are trying to solve, then its just simple string matching
 
 # how does this work????
 every folders P#XXXX contains statement and testcases
 
 the program loads all the statements and show it to you on the terminal
 
-select one and hit Enter to submit your **EXECUTABLE** so the program can cross-checking your output
+select one and hit Enter to submit your (Windows) EXECUTABLE so the program can cross-checking your output
 
 there is more, you can add Programming Problem Statement and testcases by, guess what, creating folders and textfiles. wow i know.
 
