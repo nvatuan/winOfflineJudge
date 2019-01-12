@@ -20,5 +20,7 @@ select one and hit Enter to submit your (Windows) EXECUTABLE so the program can 
 
 there is more, you can add Programming Problem Statement and testcases by, guess what, creating folders and textfiles. wow i know.
 
+also if you write a executable that output the answer file you are an asshole
+
 # demo-screencap
 ![alt text](https://github.com/nvatuan/lorem-ipsum/blob/master/project-demo-cap.png?raw=true)
