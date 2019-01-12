@@ -6,7 +6,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 a test project for me to see how creative i can be with windows console and the place cursor function
 so uh basically you can create a FPS game with this console i found some dude's project on the internet
 
-the only limit is that you have to print a character and not free form drawing pixels, that's strong enough i guess?
+the only limit is that you have to print a character and each character has the same dimension, apparently to me you are not able to free form drawing pixels, that's strong enough i guess?
 
 
 this is a simple program that displays a programming problem, for data each problem has a testcases folder and a problem statement, when you hit submit, you will be prompted to select a (Windows) executable within the same folder of the problem you are trying to solve, then its just simple string matching
