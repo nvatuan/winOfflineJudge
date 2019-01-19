@@ -79,10 +79,16 @@ int select(unsigned *X, unsigned *Y)
 //------------------------------------------------------------------------------------------------------------------------------------------//
 void clrscr(int sh, int sv, int h, int v)
 {
+	char emptyline[v+2];
+	memset(emptyline, ' ', v);
+	emptyline[v] = '\n';
+	emptyline[v+1] = '\0';
+
+	gotoXY(sh, sv);
 	for(int i = 0; i < h; i++) {
-		gotoXY(sh+i, sv);
-		for(int j = 0; j < v; j++) std::cout << ' ';
-		std::cout << "\n";
+		//for(int j = 0; j < v; j++) std::cout << ' ';
+		//std::cout << "\n";
+		printf("%s", emptyline);
 	}
 	gotoXY(2,0);
 }

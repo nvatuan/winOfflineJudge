@@ -1,0 +1,29 @@
+  Problem#0003: A drop of number
+--------------------------------------------------------------------------------------------------|
+There are stories about numbers falling from the sky.
+It says, there is a 1% chance that a random number will drop per day.
+People like to think that God is warning them about something. Others think God is doing Math.
+But no one knows, the one who keeps dropping those numbers is you. And you think throwing numbers is
+funny.
+
+You have in your hand a number and perform a calculation.
+That calculation is sum of all the digits of that number.
+After you add up all of the digits, you throw that number down to Earth and wonder:
+What is the smallest number you can create, that has the same sum of all the digits as the
+previous number?
+
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+A positive integer number, N
+(0 <= n <= 10**18)
+
+OUTPUT:
+The smallest positive integer that has the same sum of all digits of N
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+1234
+OUTPUT:
+19
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

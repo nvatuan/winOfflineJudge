@@ -19,12 +19,12 @@ Being a new god like you are, you don't really want to refuse to any trivial pra
 You decide to help Huy by sending Huy a small program.
 
 --[STATEMENT]-------------------------------------------------------------------------------------|
-The program takes ONE INTEGER  n  as INPUT. (0 < n < 1 000 000 000 000 000 001) (or 0 < n <= 10^18)
-OUPUT ONE INTEGER that is the largest even number, but smaller than  n
+The program takes ONE INTEGER  n  as INPUT. (0 < n < 1 000 000 000 000 000 001 OR 0 < n <= 10**18)
+OUPUT ONE INTEGER, it's the largest even number possible that is smaller than  n  
 In other words, OUTPUT ONE even INTEGER that is strictly smaller than  n
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:
-An integer n (0 < n <= 10^18)
+An integer n (0 < n <= 10**18)
 OUTPUT:
 An integer that satifies the statement.
 --[EXAMPLE]---------------------------------------------------------------------------------------|

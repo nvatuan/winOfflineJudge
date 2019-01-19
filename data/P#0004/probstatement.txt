@@ -1,0 +1,32 @@
+  Problem#0004: Snapping Sticks
+--------------------------------------------------------------------------------------------------|
+While sitting high up in the sky, looking down on mankind, you notice two kids are playing
+in the playground. They are Alice and Bob, they are kind kids and also very smart. 
+They will probably appear in many more problem statements in the future.
+
+You are interested in what they are doing.
+They have 3 sticks, and they are trying to form a triangle.
+If it is impossible to form a triangle with the 3 sticks, they break one of the sticks into 2 parts
+and throw away one part. They wonder what length of the shortest part they can break and throw away
+so that a triangle can be formed from the remaining sticks.
+
+Given the length of the 3 sticks your task is to determine if a triangle can be formed.
+If it is possible, print "0"
+If it is not possible, print out the length of the shortest part that they have to break
+
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+Three positive integer number on the same line, separated by a space character
+Each stick has its length greater than 0 and <= 10**18
+OUTPUT:
+If it's possible, print out a zero
+Otherwise print out the length of the shortest part they have to break
+
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+1 2 3
+OUTPUT:
+1
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM
