@@ -84,12 +84,12 @@ int main(int argc, char *argu[]){
     cout << "--------------------------------------------------\n";
     SetColor(7);
 
-    if(!!execount){
-    	cout << "At ";
+    cout << "At ";
     	SetColor(15);
     	cout << argu[1] << endl;
     	SetColor(7);
 
+    if(!!execount){
     	if(execount == 1) 
     		 cout << " [" << execount << "] .exe file was found: " <<  endl;
     	else cout << " [" << execount << "] .exe files were found: " <<  endl;

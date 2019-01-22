@@ -179,7 +179,7 @@ breakoutSelecting:
 //------------------------------------------------------------ END MAIN ------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void submitConsolePop(){
-	string cmdSubmitStr = "START submit.exe " + string(absPWD) + '\\' + probs[X-2];
+	string cmdSubmitStr = "START submit.exe \"" + string(absPWD) + '\\' + probs[X-2] + "\"";
 	system(cmdSubmitStr.c_str());
 	return;
 }
