@@ -12,7 +12,7 @@ Huy was sick from bad-weather so he had to skip school that day.
 Today, he goes to school and notices he has an one-period exam. One problem states that, for each
 number that is given, write out the largest even number that is smaller than that number. He is
 SHOCKED. Since he always get perfect grades, he couldn't afford to fail this one. But all of his
-teacher are robots, he couldn't ask them to delay the test or even make an exception for him. 
+teachers are robots, he couldn't ask them to delay the test or even make an exception for him. 
 Troubled, he decides to pray Gods for help. (that's your new job)
 
 Being a new god like you are, you don't really want to refuse to any trivial prayers.
@@ -20,8 +20,8 @@ You decide to help Huy by sending Huy a small program.
 
 --[STATEMENT]-------------------------------------------------------------------------------------|
 The program takes ONE INTEGER  n  as INPUT. (0 < n < 1 000 000 000 000 000 001 OR 0 < n <= 10**18)
-OUPUT ONE INTEGER, it's the largest even number possible that is smaller than  n  
-In other words, OUTPUT ONE even INTEGER that is strictly smaller than  n
+OUTPUT ONE INTEGER, it's the largest even number possible that is smaller than  n  
+In other words, OUTPUT one EVEN INTEGER that is strictly smaller than  n
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:
 An integer n (0 < n <= 10**18)

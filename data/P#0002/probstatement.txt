@@ -1,23 +1,26 @@
   Problem#0002: Leaving Message
 --------------------------------------------------------------------------------------------------|
-Your name is Trave. You are a traveller. Your wish is to travel all across the Earth.
-But you live with your brother and because he is not home at the moment. 
-If you leave the house without telling him, your brother might be worried!
-Thus, you want to leave behind a message so he can read it.
+There is this traveller's name is Trave. His wish is to travel all across the Earth.
+But he lives with his brother and his brother is not home at the moment. 
+If he leaves the house without telling his brother, his brother might be worried!
+Thus, he wants to leave behind a message so his brother can read it.
 
-Though there is one more thing, if he understands the message immediately then that would be too
-easy! You decide to change your message so he has to waste time deciphering the message.
+However, there is one more thing, if the brother understands the message immediately then that
+would be too easy! Trave decides to change his message so his brother has to waste time on
+deciphering the message.
 
-You want to do that as follows:
+Trave wants to do that as follows:
 
-Your message is a string contains at least one character of four things listed below:
+His message is a string contains at least one character of four things listed below:
 1> 26 English characters (the alphabet) both CAPITALIZED and normal (therefore, 26 * 2 characters)
 2> space character " " (without the quotation marks "")
 3> Dots "." (without the quotation marks "")
 4> Commas "," (without the quotation marks "")
 
-You want to delete every space (" "), every dot ("."), and every comma (",") character
+He wants to delete every space (" "), every dot ("."), and every comma (",") character
 and CHANGE EVERY CAPITALIZED CHARACTERS to non-capitalized characters.
+
+He prays you for help, even though he doesn't need it.
 
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT:

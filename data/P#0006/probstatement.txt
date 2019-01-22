@@ -1,0 +1,43 @@
+  Problem#0006: Hibana and the rainwater tiles
+--------------------------------------------------------------------------------------------------|
+Hibana is a highschooler girl. She likes her room tidy, neat and DRY.
+Recently it has been raining heavily. She likes rain. It helps her with her sleep. She enjoys
+sleeping while it's raining.
+
+During one of her peaceful sleeps. Some of the rain has made its way to her room floor!!
+She got a leaky roof!! And rainwater is dripping down on the floor.
+
+The next morning, the rain has disappeared. But the water on the floor hasn't.
+She wants to mop it up but first, she wants to know how many tiles of water there are in her room.
+Her room is a rectangle, consists of multiple square tiles. 
+If her room is 3x6, it would probably looks like this: (without the square brackets [ ])
+
+    [D][D][D][D][D][D]    Inside each of the tiles, there will be either:
+    [D][D][W][W][W][D]    D for Dry; or W for Wet. She wants to know how many W tiles there are.
+    [W][D][D][D][D][W] <- In this example, there are 5 WET tiles. 5 is what Hibana is looking for
+
+Given the dimensions of her room: Width and Length
+Given a matrix represents her room with water or not.
+Help her to count how many wet tiles are there in her room.
+Since you are some what responsible for the rain.
+
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+First line, contains two positive integer: W and L (1 <= W, L <= 1000)
+Next W lines, each line has L character, either 'D' or 'W'
+OUTPUT:
+The number of 'W' characters there are
+
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+4 7
+DDDWDDD
+WWDWDDD
+DDDDDDD
+DWDWWWD
+OUTPUT:
+8   
+
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

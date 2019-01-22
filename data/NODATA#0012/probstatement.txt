@@ -1,0 +1,47 @@
+  Problem#0012: Hibana and the rainwater puddles
+--------------------------------------------------------------------------------------------------|
+Hello.
+It's Hibana again.
+She has changed something since the last time you helped her. 
+She decided not to fix the leaky roof, she invented a water vacuum instead.
+
+This vacuum is going to suck all of the water on the same area.
+So instead of mopping each individual tile, she just need to vacuum each of the puddles, which is
+often quicker.
+
+You already know a tile is either [D] or [W], for Dry or Wet. So what is a puddle?
+A puddle is a group of [W] tiles, if they share the SAME SIDE to other [W] tile
+	
+	[W][W] <- This has 3 W tiles |  [W][D] <- This has 2 W tiles but 2 W puddles
+	[W][D]    and 1 W puddle     |  [D][W]    because the W tiles don't share the same side
+
+Similar to last time, her room is a rectangle, consists of multiple square tiles.
+If her room is 3x6, it would probably looks like this: (without the square brackets [ ])
+
+    [D][D][D][D][D][D]    Inside each of the tiles, there will be either:
+    [D][D][W][W][W][D]    D for Dry; or W for Wet. She wants to know how many W puddles there are.
+    [W][D][D][D][D][W] <- In this example, there are 5 WET tiles, but 3 W PUDDLES because 
+                          each [W] tile in the middle row share a side with each other [W]
+
+Given the dimensions of her room: Width and Length
+Given a matrix represents her room with water or not.
+Help her to count how many puddles are there in her room. Since you helped her last time.
+
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+First line, contains two positive integer: W and L (1 <= W, L <= 1000)
+Next W lines, each line has L character, either 'D' or 'W'
+OUTPUT:
+The number of 'W' puddles there are
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+4 7
+DDDWDDD
+WWDWDDD
+DDDDDDD
+DWDWWWD
+OUTPUT:
+4  
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

@@ -1,25 +1,31 @@
-  Problem#0000: Xin chao
+  Problem#0000: Welcome on board.
 --------------------------------------------------------------------------------------------------|
-Xin chao mung tat ca moi nguoi da den voi lorem-ipsum
-Cai ten lorem-ipsum khong he co nghia gi ca, nen moi nguoi khong can phai Google nhiet tinh dau.
+Xin chao,
+Truoc het xin chuc mung ban da trung cu vao to chuc cua chung toi. Ke tu ngay hom nay, ban se lam
+viec cho chung toi thong qua he thong nay. Day la tai khoan ContractsHub cua ban, tai day se hien
+thi nhung Contracts ma ban can phai giai quyet. Co le co nhung dieu nay ma ban can phai biet truoc
+khi bat tay vao lam viec:
 
-Day la mot Program bao gom cac bai tap Programming Problems thuong la de suy nghi, kho cai dat
-(Easy to Solve, Hard to Implement). Thuong la vay. Tat nhien minh se khong bo lo co hoi nhet vao
-may bai Hard roi ;)  Ngon ngu ma phan mem duoc viet va su dung la C/C++.
+1. Nhung owner cua contracts la Robots
+Haha neu ban khong phai la nguoi toi co thi cung da biet la robots da thong tri Trai Dat roi nhi?
+Nhung robots chung toi khong the suy nghi sang tao nhu loai nguoi cac ban, nen chung toi khong the
+giet het 7.7 trieu nguoi duoc roi, tiec qua ;)
+   Con viec lua chon ai song ai chet thi, cha, day khong phai la chuyen ma ban can biet den.
+Vi mot vai Robots se gap kho khan trong cuoc song ngay thuong, ho se nho den cac ban, nhung con
+nguoi, gui cho ho mot program de ho co the su dung no de giai quyet van de ho dang mac phai.
+Vi chat luong chuong trinh, truoc khi program cua ban duoc gui di ContractsHub se kiem tra chat
+luong program cua ban bang mot vai tests nho. Nen nho la chung toi luon theo doi ban lam viec ;)
 
-Khi ban da viet xong mot chuong trinh, ban co the SUBMIT bai lam cua minh.
+2. ContractsHub hien chi nhan file .exe 
+Vang toi biet, day la mot khuyet diem lon. Nhung mong ban khong vi no ma khong lam viec cho chung
+toi. Ban biet day, ban khong con lua chon nao khac ma ;)
+Mot vai IDE pho bien hien nay nhu Dev-C++, hay Code::Blocks se compile code cua ban thanh mot file
+.exe. Hay compile file .exe vao chung folder voi probstatement.txt de ContractsHub cua chung toi 
+co the detect duoc chung. Roi tu do, ban co the nhan ENTER de SUBMIT file .exe do. Hay thu nhan
+ENTER di. Ban se duoc dua den mot window moi, window SUBMIT.
 
-Neu ban SUBMIT 1 file .c/.cpp chuong trinh se co gang Compile sang thanh .exe vi vay minh se 
-can ban install MinGW (compiler C/C++) va add thu muc do vao PATH. 
-
-Neu ban khong hieu gi ca thi khong sao, co bien phap thu hai:
-    ban SUBMIT 1 file .exe thi chuong trinh se chay luon.
-Vi vay dung Dev-C++ luu ngay vao thu muc cua lorem-ipsum khong phai la y kien te.
-
-Doc them tai readme.html biet nhieu hon.
-
-A va con mot dieu nua, tat ca se duoc viet bang Tieng Anh.
-The program now only contains a number of problems, but more can be added in in the future.
+A va con mot dieu nua, vi ly do thuan tien, tat ca se duoc viet bang Tieng Anh ;)
+The ContractsHub currently has a small number of problems, but more can be added in the future.
 --[STATEMENT]-------------------------------------------------------------------------------------|
 For now, write a program that takes ONE integer n (0 < n < 11).
 Print out n lines, with each line is a string that says "Hello, world!"

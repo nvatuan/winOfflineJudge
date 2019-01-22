@@ -7,11 +7,11 @@ They will probably appear in many more problem statements in the future.
 You are interested in what they are doing.
 They have 3 sticks, and they are trying to form a triangle.
 If it is impossible to form a triangle with the 3 sticks, they break one of the sticks into 2 parts
-and throw away one part. They wonder what length of the shortest part they can break and throw away
+and throw away one part. They wonder what is shortest length of stick they can break and throw away
 so that a triangle can be formed from the remaining sticks.
 
 Given the length of the 3 sticks your task is to determine if a triangle can be formed.
-If it is possible, print "0"
+If it is possible, print out 0
 If it is not possible, print out the length of the shortest part that they have to break
 
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
@@ -22,11 +22,11 @@ OUTPUT:
 If it's possible, print out a zero
 Otherwise print out the length of the shortest part they have to break
 
---[EXAMPLE]---------------------------------------------------------------------------------------|
-INPUT:
-1 2 3
-OUTPUT:
-1
+--[EXAMPLE]----|--[EXPLANATION]-------------------------------------------------------------------|
+INPUT:         |  It is impossible to form a triangle, so a stick has to be snapped.
+1 2 3          |  Break the stick with length 3 downto two parts: 2 and 1
+OUTPUT:        |  A triangle can be formed with 3 sticks: 1, 2, 2 
+1              |  Thus, you can throw away the part with length 1
 --[CONSTRAINTS]-----------------------------------------------------------------------------------|
 Time limit: 1 second
 Memory limit: Size of your RAM

@@ -1,0 +1,46 @@
+  Problem#0008: Busy line
+--------------------------------------------------------------------------------------------------|
+It's the 21st Century, communication is so convenient nowadays.
+Everyone has a smartphone in their pocket, and smartphones can store phone numbers so you don't
+have to remember anything or even dial the numbers. You just tap on the person's name to call them.
+Such modern life.
+
+Tom works at a Phone Telecom Service. Tom's company is a strange company, they don't use normal
+phone numbers format, they use their own phone numbers format. 
+TO THEM, a PHONE NUMBER is a positive integer, from 0 to 1000000. (includes 0 and 1000000)
+
+Tom's job is to look at machines and ensure the power cables are plugged in... and that's it.
+He spends his everyday not doing anything because everything is done by machines now. Bored, he
+decides to look at the Dialling Log.
+Dialling Log is a file. It contains the number of phone calls have been made today and all of
+the phone callers and phone receivers. Given a Dialling Log, Tom wonders, how many people have
+communicated using their phone on that day. NOTE THAT a caller can call themself.
+
+For example, this is a Dialling Log:
+   _                     _
+  |  5                    | <-- On that day, 5 calls have been made
+  |  931 15431            | <-- 5 lines below, each line has the caller number 
+  |  1234 444             |     and the receiver number
+  |  0 12                 | In this example, there are 5 calls that have been made, 
+  |  931 0                | but there are only 7 people use their phone here
+  |_ 13 12  ______________| because some people are responsible for more than 1 call.
+
+Thus, there are 7 people communicate using their phone. 7 is the number Tom is looking for.
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+First line, contains a positive integer N (1 <= N <= 10**5)
+Next N lines, each line contains 2 positive numbers: A and B 
+that is Caller Number and Receiver Number (0 <= A, B <= 10**6) (A may be equal to B)
+OUTPUT:
+A positive integer, the number of people communicated using their phone on that day
+--[EXAMPLE]----|--[EXPLANATION]-------------------------------------------------------------------|
+INPUT:         |
+3              |  On that day, there are 3 people communicated using their phone
+1 2            |  Those are people with their phone number: 1, 2 and 3
+2 3            | 
+3 1            |
+OUTPUT:        |
+3              |
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

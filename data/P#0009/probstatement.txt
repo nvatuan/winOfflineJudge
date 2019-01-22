@@ -1,0 +1,45 @@
+  Problem#0009: Mass Opinion
+--------------------------------------------------------------------------------------------------|
+Channel14 is a popular website that posts news articles and reviews.
+
+Channel14 earns money from clicks and views. And article that has the most views (or clicks), 
+its writer will also earns the most. This means, a user doesn't have to read the article,
+they just have to click on an article. This leads to making shocking, absurd headlines that make
+people curious enough to click on it. This phenomenon is called "click-baiting".
+
+Because of this, a writer doesn't need to write the actual article! They only have to write
+the Title! So to combat against this, Channel14 made a rating system to filter its articles.
+A reader can vote a news article GOOD/BAD based on how they feel about it. And Channel14 will
+display better articles on the top and worse articles down the bottom.
+Article A is better than Article B if Article A has its GOOD:BAD ratio higher than B's.
+The system guarantees there are NO 2 ARTICLES with THE SAME GOOD:BAD ratio NOR THE SAME TITLE.
+
+You are given an amount of articles. Each article has a title, number of ratings, and the rating
+(1 is GOOD, -1 is BAD). Your task is to output all of the articles' title following the order of
+descending GOOD:BAD ratio.
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+First line, a positive integer N, is the amount of articles (1 <= N <= 1000)
+The next N lines, each line has the title of each of N article (0 < Title length <= 1000)
+After that, there are N lines, i-th line is a number sequence, is the ratings of the i-th article:
+   The first number is the number of ratings, is a positive integer R (1 <= R <= 1000)
+   Then, there are R integers are either 1 or -1, represent GOOD or BAD
+OUTPUT:
+N lines, each line contains title of an articles. OUTPUT follows descending GOOD:BAD ratio order.
+--[EXAMPLE]-------------------------------|--[EXPLANATION]----------------------------------------|
+INPUT:                                    |  There are 3 articles:
+3                                         |  "ABC" is the 1st article
+ABC                                       |  "Chang trai ngheo vuot kho" is the 2nd article
+Chang trai ngheo vuot kho                 |  "Vu gian lan thi cu, sua diem tai Son La" is the 3rd
+Vu gian lan thi cu, sua diem tai Son La   |  
+3 1 -1 -1                                 |  Rating of the First article, has 1 GOOD and 2 BAD 
+5 1 1 1 1 -1                              |  Rating of the Second article has 4 GOOD and 1 BAD
+10 1 1 1 1 1 1 1 1 1 1                    |  Rating of the Third article has 10 GOOD and 0 BAD
+OUTPUT:                                   |  First article  has GOOD:BAD ratio is 33.33%
+Vu gian lan thi cu, sua diem tai Son La   |  Second article has GOOD:BAD ratio is 80%
+Chang trai ngheo vuot kho                 |  Third article  has GOOD:BAD ratio is 100%
+ABC                                       |  
+                                          |  Then, the order of output is: 3rd -> 2nd -> 1st
+--[CONSTRAINTS]---------------------------|  (because 100% > 80% > 33.33%)
+Time limit: 1 second                      |  (remember INPUT guarantees there are no 2 articles
+Memory limit: Size of your RAM            |  with the same ratio)

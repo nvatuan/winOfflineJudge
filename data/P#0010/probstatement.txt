@@ -2,7 +2,7 @@
 --------------------------------------------------------------------------------------------------|
 The organization seems happy with how well you are doing your work.
 They are considering to raise your salary. That means you can have more money per month!
-Well that is what you heard...
+Well that was what you heard...
 Curious, you want to eavesdrop (secretly read) their online conversation.
 
 Your plan is as follow:
@@ -17,7 +17,7 @@ to get the messages that they are trying to send.
                                     [ YOU ]    
 
 This router has ZERO protection. And it even uses default username and password! So hacking it
-wasn't so hard. 
+wasn't so hard.
 Done, you are now sit between two people chatting, this is called Man-in-the-Middle attack.
 But data that passes through the router is in binary code! And you want to decode that to something
 you can read.
@@ -26,16 +26,20 @@ You know they are sending ASCII text, so that means 8 bits represent 1 character
 So in a long binary sequence, for every 8 bits there is 1 hidden ASCII character.
 Given a sequence of binary characters, which has its length divisible by 8
 Your task is to output the ASCII text of that sequence.
+
 --[I/O FORMAT: standard]--------------------------------------------------------------------------|
 INPUT: 
-A binary sequence which has length divisible by 8. Length of that sequence <= 8*(10**5)
+A binary sequence which has length divisible by 8. Length of that sequence <= 8*100000
+INPUT string is never empty.
 OUTPUT:
 A string of ASCII characters, which is what the binary sequence represents.
+
 --[EXAMPLE]---------------------------------------------------------------------------------------|
 INPUT:
 0100011000101010010000110100101100100001
 OUTPUT:
 F*CK!
+
 --[CONSTRAINTS]-----------------------------------------------------------------------------------|
 Time limit: 1 second
 Memory limit: Size of your RAM

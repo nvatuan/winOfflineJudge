@@ -1,0 +1,34 @@
+  Problem#0005: Wrong Subtraction
+--------------------------------------------------------------------------------------------------|
+"You are an adult now." - You whisper to yourself as you watch over the Earth.
+The lack of jobs surely got you bored. You start to have flashbacks and look back at your memories.
+You wonder, how did you get here?
+
+The earliest memory of you that you can remember is the day you learnt how to do subtraction.
+Except the fact that you learnt to do it the wrong way. You still remember how to do it.
+
+You are given two positive integer numbers A and B.
+Back then, you thought A - B was just doing A - 1 repeatedly B times. Which is true, but there was
+another thing that made it wrong. You remove the last zero from A if the last digit of A is Zero.
+
+In summary, this was how you do subtraction back then:
+(A - B) means doing the following things B times:
+-  If A does not end with a Zero, subtract A by 1
+-  If A does end with a Zero, remove the last digit (which is Zero) from A.
+
+Remember one more thing, you learnt this wrong subtraction before you learnt about Negative number
+Thus, result is guaranteed to be a Positive number, larger than 0.
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+One line, contains two positive integers A and B (0 <= B < A <= 10**18)
+OUTPUT:
+Result of the WRONG SUBTRACTION of A - B. Remember, result is guaranteed to be larger than Zero.
+
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+20 2
+OUTPUT:
+1   
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM

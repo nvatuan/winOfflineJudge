@@ -1,0 +1,47 @@
+  Problem#0007: Greedy is Good Greedy is Great
+--------------------------------------------------------------------------------------------------|
+Avaritia is a greedy theif. Nothing is wrong with being greedy if you are ALREADY A THEIF.
+He tries to steal as many valuable items as he can. In his eyes, a $2 book is wayy cheaper than
+a $3 book. Yes, he would take a $3 book instead of a $2 book everytime.
+
+Now, he has broken into a bank. This bank has 4 kinds of coins: $1, $5, $10 and $20
+He wants to steal as many as he can but he has made a big mistake, his bag can only contain an
+amount of coins!! Notice that any coin has the same weight.
+Given the amount of coins Avaritia can put in his bag. 
+Given the amount of $1 coins, $5 coins, $10 coins, $20 coins the bank has.
+Can you calculate the highest value he can steal?
+--[I/O FORMAT: standard]--------------------------------------------------------------------------|
+INPUT:
+First line, a positive integer is the amount of coins Avaritia can carry
+Second line, 4 positive numbers, with each of them being the number of:
+             $1 coins, $5 coins, $10 coins, $20 coins that the bank has.
+Any INPUT number is greater than 0 and not greater than 10**18. Result is not greater than 10**18
+OUTPUT:
+One integer number, the highest value he can steal. Just the integer, don't output the dollar sign
+--[EXAMPLE]---------------------------------------------------------------------------------------|
+INPUT:
+5
+5 4 3 2
+OUTPUT:
+70
+--[CONSTRAINTS]-----------------------------------------------------------------------------------|
+Time limit: 1 second
+Memory limit: Size of your RAM
+--[SIDENOTE]--------------------------------------------------------------------------------------|
+This problem is a classic problem with a little twist that is solved using Greedy Algorithm.
+Greedy Algorithm (or Thuat toan Tham Lam) is a way to solve problems.
+A solution to a problem has multiple steps. And solving something Greedily means each step, you
+make the most optimal choice that (you currently see) or (is currently available).
+
+Let's say, you are selling something to someone. To be able to make profit, you will sell it as
+high as you can, right? If the buyer complains, you will have 2 choices: Raise it or lower it.
+If you raise the price, the buyer might leave and not buy it. So you will have to lower the price.
+As you can see here, if you sell the item low price, then the buyer complains and you have to
+lower it more. You will lose profit. So the best thing you can do is start selling it high price.
+
+Other example: When you are preparing the school bag, what would you do if you forget which subject
+tomorrow has? You can bring all of the books and notebooks, but a Greedy solution is: You don't
+have to bring the subjects you already learned this week. Well, if tomorrow is Monday then...
+
+Greedy Algorithm does not always work, as you might have realized. But it is still a fanstatic algo
+Go read more about it Online >> vnoi.info/wiki/translate/topcoder/Greedy-is-Good
