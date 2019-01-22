@@ -85,9 +85,9 @@ int main(int argc, char *argu[]){
     SetColor(7);
 
     cout << "At ";
-    	SetColor(15);
-    	cout << argu[1] << endl;
-    	SetColor(7);
+	SetColor(15);
+	cout << argu[1] << endl;
+	SetColor(7);
 
     if(!!execount){
     	if(execount == 1) 
@@ -161,6 +161,7 @@ int checkWA(int t_id){
 int judge(int exe_id){
 	cout << "\nJUDGING...\n";
 	////////////////////////////////  COMMANDLINE STRING
+cout << "INIT...\n";
 	string sCLONE   = "Doppelganger_" + exefiles[exe_id];
 	string sCMDCOPY = "COPY \"" + sPATH + "\\" + exefiles[exe_id] + "\" /B " + \
 					       "\"" + sPATH + "\\" + sCLONE           + "\" /B > nul";
@@ -176,11 +177,12 @@ int judge(int exe_id){
 	SetColor(10);
 	int t_id = 0;
 	//for(int t_id = 1; t_id <= TESTSCOUNT; t_id++){		// ABANDONING TESTCOUNT VARIABLE
+cout << "GOING THROUGH TESTCASES\n";
 	while(++t_id){
 		string inNo = sPATH + "\\testcases\\in" + to_string(t_id);
 		if(access( inNo.c_str(), F_OK) == -1){ break; }
 		string outNo = sPATH + "\\testcases\\out" + to_string(t_id);
-		if(access( outNo.c_str(), F_OK) == -1){ SetColor(7); cout << "Output file out" << t_id << " doesnt seem to exist.\n"; continue; }
+		if(access( outNo.c_str(), F_OK) == -1){ SetColor(7); cout << "Output file out" << t_id << " doesn't exist.\n"; continue; }
 
 	    string JUDGECOMMAND = \
 	    	"C:\\Windows\\System32\\cmd.exe /c type " + inNo + \
@@ -213,12 +215,16 @@ int judge(int exe_id){
 			    		SetColor(12);
 			    		cout << "Wrong Answer on Test " << t_id << "\n";
 			    		if(MODE_AC){
+			    			CloseHandle(ProcessInfo.hThread);
+		    				CloseHandle(ProcessInfo.hProcess);
 			    			system(sCMDDEL.c_str());
 			    			return -1;
 			    		}
 			    	case -1:
 			    		SetColor(15);
 			    		cout << "Cannot open test files to cross-check answer.\n";
+			    		CloseHandle(ProcessInfo.hThread);
+		    			CloseHandle(ProcessInfo.hProcess);
 			    		system(sCMDDEL.c_str());
 			    		return -100;
 		    	}
@@ -228,15 +234,20 @@ int judge(int exe_id){
 
 				SetColor(12);
 				cout << "Time Limit Exceed on Test " << t_id << "\n";
+cout << "CLOSING HANDLES...\n";
 				CloseHandle(ProcessInfo.hThread);
 		    	CloseHandle(ProcessInfo.hProcess);
-		    	
+
+cout << "KILLING TASK...\n";
 		    	system(sCMDKIL.c_str());
+cout << "DELETING DUPLICATE...\n";
 				system(sCMDDEL.c_str());
+cout << "FINISHING...\n";
 				if(MODE_AC) return -2; 
 			}
 		}
 	}
+cout << "DELETING DUPLICATE 2...\n";
 	system(sCMDDEL.c_str());
 	if(t_id == 1) {SetColor(15); cout << "NO TESTFILE FOUND, MAKE SURE THAT YOUR TESTFILES WERE LABLED FROM in1/out1\n"; return -100;}
 	else return 100;

@@ -88,7 +88,7 @@ int main(int argc, char *argu[]){
 	else{
 		displayHeading();
 		initStatusExitcode(); promptDir(); PROBSLOWERBOUND = probs.size()+1;
-		clrscr(0, 0, HSCREEN, VSCREEN);
+		clrscr(0, 0, 100, 150);//HSCREEN, VSCREEN);
 	}
 	
 reloadDisplay:
