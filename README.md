@@ -23,4 +23,4 @@ there is more, you can add Programming Problem Statement and testcases by, guess
 also if you write an executable that output the answer file of the problem you are an asshole
 
 # demo-screencap
-![alt text](https://github.com/nvatuan/lorem-ipsum/blob/master/project-demo-cap.png?raw=true)
+![alt text](https://github.com/nvatuan/lorem-ipsum/blob/master/raw/project-demo-cap.png?raw=true)
