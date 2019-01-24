@@ -10,9 +10,9 @@
 using namespace std;
 
 //////////////////////////////////// INIT ////////////////////////////////////
-string ACCEPTED = "      __     _____   ______  _____   ______  _______  ______  ______ \n     /  |  / ____/  /_____/ |  ___| |  __  | __   __ |  ____ |  __  |\n    /   | | |      | |      | |__   | |__) |   | |   | |__   | |  | |\n   / /| | | |      | |      |  __|  |  ____|   | |   |  __|  | |  | |\n  / __  | | |____  | |____  | |___  | |        | |   | |____ | |__| |\n /_/  |_| |______/ |______| |_____| |_|        |_|   |______ |_____/ \n";
-string WA = " _ _ _ _____ _____ _____ _____    _____ _____ _____ _ _ _ _____ _____\n| | | | __  |     |   | |   __|  |  _  |   | |   __| | | |   __| __  |\n| | | |    -|  |  | | | |  |  |  |     | | | |__   | | | |   __|    -|\n|_____|__|__|_____|_|___|_____|  |__|__|_|___|_____|_____|_____|__|__|\n";
-string TLE = "  _______ _                  _      _           _ _     ______                       _          _\n |__   __(_)                | |    (_)         (_) |   |  ____|                     | |        | |\n    | |   _ _ __ ___   ___  | |     _ _ __ ___  _| |_  | |__  __  _____ ___  ___  __| | ___  __| |\n    | |  | | '_ ` _ \\ / _ \\ | |    | | '_ ` _ \\| | __| |  __| \\ \\/ / __/ _ \\/ _ \\/ _` |/ _ \\/ _` |\n    | |  | | | | | | |  __/ | |____| | | | | | | | |_  | |____ >  < (_|  __/  __/ (_| |  __/ (_| |\n    |_|  |_|_| |_| |_|\\___| |______|_|_| |_| |_|_|\\__| |______/_/\\_\\___\\___|\\___|\\__,_|\\___|\\__,_|\n";
+string ACCEPTED =  " _____  _____  _____  _____  _____  _____  _____  ____  \n|  _  ||     ||     ||   __||  _  ||_   _||   __||    \\\n|     ||   --||   --||   __||   __|  | |  |   __||  |  |\n|__|__||_____||_____||_____||__|     |_|  |_____||____/ \n";
+string WA =  " _ _ _                 _____                       \n| | | |___ ___ ___ ___|  _  |___ ___ _ _ _ ___ ___ \n| | | |  _| . |   | . |     |   |_ -| | | | -_|  _|\n|_____|_| |___|_|_|_  |__|__|_|_|___|_____|___|_|  \n                  |___|                            \n";
+string TLE =  " _____  _              __     _         _  _    _____                        _ \n|_   _||_| _____  ___ |  |   |_| _____ |_|| |_ |   __| _ _  ___  ___  ___  _| |\n  | |  | ||     || -_||  |__ | ||     || ||  _||   __||_'_||  _|| -_|| -_|| . |\n  |_|  |_||_|_|_||___||_____||_||_|_|_||_||_|  |_____||_,_||___||___||___||___|\n";
 vector <string> exefiles;
 string sPATH;
 //string JUDGECOMMAND;
@@ -31,6 +31,11 @@ int TESTSPASSBEST;
 int SUBMISSIONS;
 int TIMELIMIT;
 int EXTRATIME = 100;
+////////////////////////////// INIT CMD COMMAND //////////////////////////////
+string sCLONE;
+string sCMDCOPY;
+string sCMDDEL;
+string sCMDKIL;
 ///////////////////////////////// PROTOTYPE //////////////////////////////////
 int readSubDetails();
 int writeSubDetails();
@@ -162,11 +167,11 @@ int judge(int exe_id){
 	cout << "\nJUDGING...\n";
 	////////////////////////////////  COMMANDLINE STRING
 cout << "INIT...\n";
-	string sCLONE   = "Doppelganger_" + exefiles[exe_id];
-	string sCMDCOPY = "COPY \"" + sPATH + "\\" + exefiles[exe_id] + "\" /B " + \
+	sCLONE = "Doppelganger_" + exefiles[exe_id];	
+	sCMDCOPY = "COPY \"" + sPATH + "\\" + exefiles[exe_id] + "\" /B " + \
 					       "\"" + sPATH + "\\" + sCLONE           + "\" /B > nul";
-	string sCMDDEL  = "DEL  \"" + sPATH + "\\" + sCLONE + "\"";
-	string sCMDKIL  = "TASKKILL /F /IM \"" + sCLONE + "\" > nul";
+	sCMDDEL = "DEL  \"" + sPATH + "\\" + sCLONE + "\"\0";
+	sCMDKIL  = "TASKKILL /F /IM \"" + sCLONE + "\" > nul\0";
 	//////////////////////////////// CREATEPROCESS() INIT
 
 	char aJUDGECOMMAND[MAX_PATH];
@@ -177,7 +182,7 @@ cout << "INIT...\n";
 	SetColor(10);
 	int t_id = 0;
 	//for(int t_id = 1; t_id <= TESTSCOUNT; t_id++){		// ABANDONING TESTCOUNT VARIABLE
-cout << "GOING THROUGH TESTCASES\n";
+	//cout << "GOING THROUGH TESTCASES\n";
 	while(++t_id){
 		string inNo = sPATH + "\\testcases\\in" + to_string(t_id);
 		if(access( inNo.c_str(), F_OK) == -1){ break; }
@@ -190,12 +195,13 @@ cout << "GOING THROUGH TESTCASES\n";
 		    "\" >" + sPATH + "\\testcases\\userout";
 
 		strcpy(aJUDGECOMMAND, JUDGECOMMAND.c_str());
-
+		
 		PROCESS_INFORMATION ProcessInfo; 
 		STARTUPINFO StartupInfo; 
 		ZeroMemory(&StartupInfo, sizeof(StartupInfo));
 		StartupInfo.cb = sizeof StartupInfo ; //Only compulsory field
 
+		cout << "Creating process.." << endl;
 		if(CreateProcessA(NULL, aJUDGECOMMAND, NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo, &ProcessInfo))
 		{ 
 		    subProcessStatus = WaitForSingleObject( ProcessInfo.hProcess, TIMELIMIT + EXTRATIME );
@@ -234,20 +240,16 @@ cout << "GOING THROUGH TESTCASES\n";
 
 				SetColor(12);
 				cout << "Time Limit Exceed on Test " << t_id << "\n";
-cout << "CLOSING HANDLES...\n";
+
 				CloseHandle(ProcessInfo.hThread);
 		    	CloseHandle(ProcessInfo.hProcess);
 
-cout << "KILLING TASK...\n";
 		    	system(sCMDKIL.c_str());
-cout << "DELETING DUPLICATE...\n";
 				system(sCMDDEL.c_str());
-cout << "FINISHING...\n";
 				if(MODE_AC) return -2; 
 			}
 		}
 	}
-cout << "DELETING DUPLICATE 2...\n";
 	system(sCMDDEL.c_str());
 	if(t_id == 1) {SetColor(15); cout << "NO TESTFILE FOUND, MAKE SURE THAT YOUR TESTFILES WERE LABLED FROM in1/out1\n"; return -100;}
 	else return 100;
