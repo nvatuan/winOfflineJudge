@@ -1,4 +1,4 @@
-# ContractsHub
+# winOfflineJudge
 
 # What is this
 a test project for me to see how creative i can be with windows console and the place cursor function
